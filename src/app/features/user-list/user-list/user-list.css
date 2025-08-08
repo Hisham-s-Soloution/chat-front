@@ -1,0 +1,11 @@
+:host ::ng-deep .p-avatar {
+  border: 2px solid white;
+}
+
+:host ::ng-deep .p-avatar img {
+  object-fit: cover;
+}
+
+.bg-pink-50 {
+  background-color: #fff5f7; /* light pink hover */
+}

@@ -1,8 +1,16 @@
 {
+  "chatSystem": {
+    "welcome": "اهلا بك في عالمنا"
+  },
   "userCreation": {
     "username": "اسم المستخدم",
     "email": "البريد الالكتروني",
-    "password": "كلمو المرور"
+    "password": "كلمة المرور",
+    "title": "تسجيل المستخدمين"
+  },
+  "chats": {
+    "title": "الدردشة",
+    "subTitle": "محادثاتك"
   },
   "general": {
     "login": "تسجيل الدخول"

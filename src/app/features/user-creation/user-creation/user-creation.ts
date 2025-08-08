@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CardModule} from "primeng/card";
 import {InputText} from "primeng/inputtext";
 import {Button} from "primeng/button";
@@ -7,6 +7,8 @@ import {UserCreationModel} from '../../../shared/types/user-creation/user-creati
 import {UserCreationService} from '../user-creation-service';
 import {TranslateModule, TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {NgClass} from '@angular/common';
+import {Router} from '@angular/router';
+import {TranslationService} from '../../../core/i18n/translation-service';
 
 @Component({
   selector: 'app-user-creation',
@@ -22,12 +24,20 @@ export class UserCreation {
   };
   showPassword: boolean = false;
 
-  constructor(private _userService: UserCreationService, private translate: TranslateService) {
-    console.log(this.translate.instant('userCreation.username')); // should log 'Username'
-
+  constructor(
+    private _userService: UserCreationService,
+    private _router: Router,
+    private _translate: TranslationService,
+    private _translateService: TranslateService,
+  ) {
+    console.log(this._translate.getCurrentLanguage())
+    console.log(this._translateService.instant('userCreation.username')); // should log 'Username'
   }
 
   onSubmit() {
-    this._userService.saveNewUser(this.user).subscribe();
+    this._userService.saveNewUser(this.user).subscribe(() => {
+      this._router.navigate([this._translate.getCurrentLanguage() + '/users']);
+    });
+
   }
 }
