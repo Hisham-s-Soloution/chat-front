@@ -1,8 +1,12 @@
 {
+  "chatSystem": {
+    "welcome": "Welcome to our system"
+  },
   "userCreation": {
     "username": "Username",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "title": "User Creation"
   },
   "general":{
     "login": "Login"

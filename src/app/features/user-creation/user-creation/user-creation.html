@@ -1,19 +1,83 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-  <p-card class="w-full max-w-md">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
-      <div class="flex flex-col gap-4">
-        <label class="font-medium">{{ 'userCreation.username' | translate }}</label>
-        <input type="text" pInputText [(ngModel)]="user.userName" name="userName" required/>
+<div class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-500 p-4">
 
-        <label class="font-medium">{{ 'userCreation.email' | translate }}</label>
-        <input type="email" pInputText  [(ngModel)]="user.email" name="email" required/>
+  <!-- Animated Bubbles -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="w-64 h-64 bg-white/10 rounded-full absolute -top-10 -left-20 animate-pulse"></div>
+    <div class="w-72 h-72 bg-white/5 rounded-full absolute bottom-10 right-10 animate-ping"></div>
+  </div>
 
+  <!-- Card Container -->
+  <p-card class="w-full max-w-md rounded-2xl backdrop-blur-md bg-white/20 shadow-xl border border-white/30 animate-[fadeInUp_0.8s_ease-out]">
 
-        <label class="font-medium">{{ 'userCreation.password' | translate }}</label>
-        <input type="password" pInputText [(ngModel)]="user.password" name ="password" required/>
-
-        <button pButton type="submit" label="{{ 'general.login' | translate }}" class="w-full mt-4"></button>
+    <!-- Header -->
+    <div class="relative bg-gradient-to-r from-pink-500 to-indigo-500 p-6 text-center">
+      <!-- Floating Icon -->
+      <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white text-indigo-600 rounded-full flex items-center justify-center shadow-lg border border-white/30">
+        <i class="pi pi-comments text-3xl"></i>
       </div>
-    </form>
+      <h2 class="mt-10 text-white text-2xl font-bold">{{ 'userCreation.title' | translate }}</h2>
+      <p class="text-indigo-100 text-sm">{{ 'chatSystem.welcome' | translate }}</p>
+    </div>
+
+    <!-- Form -->
+    <div class="px-6 pb-6">
+      <form (ngSubmit)="onSubmit()" #form="ngForm" class="space-y-5">
+
+        <!-- Username -->
+        <div>
+          <label class="block mb-1 font-medium text-white">
+            {{ 'userCreation.username' | translate }}
+          </label>
+          <input type="text" pInputText [(ngModel)]="user.userName" name="userName"
+                 class="w-full rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 p-2 focus:outline-none focus:ring-2 focus:ring-pink-300 shadow-sm"
+                 placeholder="John Doe"
+                 required />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block mb-1 font-medium text-white">
+            {{ 'userCreation.email' | translate }}
+          </label>
+          <input type="email" pInputText [(ngModel)]="user.email" name="email"
+                 class="w-full rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 p-2 focus:outline-none focus:ring-2 focus:ring-pink-300 shadow-sm"
+                 placeholder="you@email.com"
+                 required />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="block mb-1 font-medium text-white">
+            {{ 'userCreation.password' | translate }}
+          </label>
+          <div class="relative">
+            <input [type]="showPassword ? 'text' : 'password'" pInputText [(ngModel)]="user.password" name="password"
+                   class="w-full rounded-lg border border-white/30 bg-white/20 text-white placeholder-white/70 p-2 pr-12 focus:outline-none focus:ring-2 focus:ring-pink-300 shadow-sm"
+                   placeholder="••••••••"
+                   required />
+            <!-- Toggle Icon -->
+            <i
+               [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"
+               (click)="showPassword = !showPassword"
+               class="pi absolute right-3 top-1/2 -translate-y-1/2 text-white text-lg cursor-pointer hover:scale-110 transition-transform duration-200 drop-shadow-md bg-pink-500/80 p-1 rounded-full">
+            </i>
+          </div>
+        </div>
+
+        <p-button
+          type="submit"
+          label="{{ 'general.login' | translate }}"
+          styleClass="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-pink-500/50">
+        </p-button>
+      </form>
+    </div>
   </p-card>
 </div>
+
+<!-- Animations -->
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

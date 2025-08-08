@@ -19,7 +19,7 @@ export class ErrorHandlerService {
     if (status === 0) {
       this.showError('Network error. Please check your connection.');
     } else if (status === 400) {
-      this.showError(`Bad request: ${message}`);
+      this.showError(`${message}`);
     } else if (status === 401) {
       this.showError('Unauthorized. Redirecting to login...');
       this.router.navigate(['/login']);
