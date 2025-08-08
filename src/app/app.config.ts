@@ -8,10 +8,14 @@ import Aura from '@primeuix/themes/aura';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {MessageService} from 'primeng/api';
 import {httpErrorInterceptor} from './core/interceptors/http-error-interceptor';
+import {loaderInterceptor} from './core/interceptors/loader-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([httpErrorInterceptor])),
+    provideHttpClient(withInterceptors([
+      httpErrorInterceptor,
+      loaderInterceptor
+    ])),
     MessageService,
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),

@@ -23,7 +23,6 @@ export class UserCreation {
   }
 
   onSubmit() {
-    console.log(this.user);
     this._userService.saveNewUser(this.user).subscribe();
   }
 }
