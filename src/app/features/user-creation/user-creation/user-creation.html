@@ -5,14 +5,14 @@
         <label class="font-medium">{{ 'userCreation.username' | translate }}</label>
         <input type="text" pInputText [(ngModel)]="user.userName" name="userName" required/>
 
-        <label class="font-medium">Email</label>
+        <label class="font-medium">{{ 'userCreation.email' | translate }}</label>
         <input type="email" pInputText  [(ngModel)]="user.email" name="email" required/>
 
 
-        <label class="font-medium">Password</label>
+        <label class="font-medium">{{ 'userCreation.password' | translate }}</label>
         <input type="password" pInputText [(ngModel)]="user.password" name ="password" required/>
 
-        <button pButton type="submit" label="Login" class="w-full mt-4"></button>
+        <button pButton type="submit" label="{{ 'general.login' | translate }}" class="w-full mt-4"></button>
       </div>
     </form>
   </p-card>

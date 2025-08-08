@@ -1,5 +1,10 @@
 {
   "userCreation": {
-    "username": "Username"
+    "username": "Username",
+    "email": "Email",
+    "password": "Password"
+  },
+  "general":{
+    "login": "Login"
   }
 }

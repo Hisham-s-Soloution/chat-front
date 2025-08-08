@@ -1,5 +1,10 @@
 {
   "userCreation": {
-    "username": "اسم المستخدم"
+    "username": "اسم المستخدم",
+    "email": "البريد الالكتروني",
+    "password": "كلمو المرور"
+  },
+  "general": {
+    "login": "تسجيل الدخول"
   }
 }
