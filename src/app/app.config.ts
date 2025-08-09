@@ -18,11 +18,13 @@ import {loaderInterceptor} from './core/interceptors/loader-interceptor';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {HttpLoaderFactory} from './core/i18n/translation-loader';
 import {appInitializerFactory} from './core/init/app-init';
+import {headerInterceptor} from './core/interceptors/header-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withInterceptors([
       httpErrorInterceptor,
+      headerInterceptor,
       loaderInterceptor
     ])),
     MessageService,

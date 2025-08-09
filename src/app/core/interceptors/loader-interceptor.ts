@@ -5,6 +5,7 @@ import {LoaderService} from '../services/loader-service';
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   const loader = inject(LoaderService);
+  debugger
   loader.show();
 
   return next(req).pipe(

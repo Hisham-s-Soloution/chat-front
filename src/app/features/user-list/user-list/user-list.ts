@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {NgClass, NgFor} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {Card} from 'primeng/card';
+import {UsersListService} from '../users-list-service';
 
 interface User {
-  id: number;
-  name: string;
+  userId: number;
+  userName: string;
   avatar: string;
-  status: 'online' | 'offline';
+  status: number;
   lastMessage: string;
   lastMessageTime: Date;
 }
@@ -24,35 +25,42 @@ interface User {
 export class UserList implements OnInit {
   users: User[] = [];
 
+  constructor(private _userListService: UsersListService) {}
+
 
   ngOnInit() {
-    // Mock data - replace with API call
-    this.users = [
-      {
-        id: 1,
-        name: 'John Doe',
-        avatar: 'https://i.pravatar.cc/150?img=1',
-        status: 'online',
-        lastMessage: 'Hey, how are you?',
-        lastMessageTime: new Date(Date.now() - 1000 * 60 * 5) // 5 minutes ago
-      },
-      {
-        id: 2,
-        name: 'Jane Smith',
-        avatar: 'https://i.pravatar.cc/150?img=2',
-        status: 'offline',
-        lastMessage: 'Let’s meet tomorrow!',
-        lastMessageTime: new Date(Date.now() - 1000 * 60 * 60 * 2) // 2 hours ago
-      },
-      {
-        id: 3,
-        name: 'David Lee',
-        avatar: 'https://i.pravatar.cc/150?img=3',
-        status: 'online',
-        lastMessage: 'See you soon 👍',
-        lastMessageTime: new Date(Date.now() - 1000 * 60 * 30) // 30 minutes ago
-      }
-    ];
+    this._userListService.getAllUsers().subscribe((users: User[]) => {
+      console.log(users);
+      this.users = users;
+    });
+
+    // // Mock data - replace with API call
+    // this.users = [
+    //   {
+    //     id: 1,
+    //     name: 'John Doe',
+    //     avatar: 'https://i.pravatar.cc/150?img=1',
+    //     status: 'online',
+    //     lastMessage: 'Hey, how are you?',
+    //     lastMessageTime: new Date(Date.now() - 1000 * 60 * 5) // 5 minutes ago
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'Jane Smith',
+    //     avatar: 'https://i.pravatar.cc/150?img=2',
+    //     status: 'offline',
+    //     lastMessage: 'Let’s meet tomorrow!',
+    //     lastMessageTime: new Date(Date.now() - 1000 * 60 * 60 * 2) // 2 hours ago
+    //   },
+    //   {
+    //     id: 3,
+    //     name: 'David Lee',
+    //     avatar: 'https://i.pravatar.cc/150?img=3',
+    //     status: 'online',
+    //     lastMessage: 'See you soon 👍',
+    //     lastMessageTime: new Date(Date.now() - 1000 * 60 * 30) // 30 minutes ago
+    //   }
+    // ];ago
   }
 
   getRelativeTime(date: Date): string {

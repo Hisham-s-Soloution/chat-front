@@ -21,6 +21,7 @@ export class TranslationService {
   }
 
   getCurrentLanguage(): string {
+    debugger
     return this.translate.currentLang || this.defaultLang;
   }
 

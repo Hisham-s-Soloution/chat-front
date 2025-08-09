@@ -17,6 +17,7 @@ export class LoaderService {
 
 
   hide(): void {
+    debugger
     this.requests = Math.max(0, this.requests - 1);
     if (this.requests === 0) {
       this.loading.next(false);
